@@ -1,10 +1,10 @@
 <template>
-  <div class="item">
-    <i>
+  <div class="mt-8 flex relative lg:mt-0 lg:pl-[calc(var(--section-gap)/2)] lg:pb-4">
+    <i class="flex items-center justify-center w-8 h-8 text-current lg:absolute lg:top-[calc(50%-25px)] lg:left-[-26px] lg:border lg:border-solid lg:border-gray-300 lg:bg-white lg:rounded-lg lg:w-[50px] lg:h-[50px]">
       <slot name="icon"></slot>
     </i>
-    <div class="details">
-      <h3>
+    <div class="flex-1 ml-4">
+      <h3 class="text-xl font-medium mb-1.5 text-gray-900">
         <slot name="heading"></slot>
       </h3>
       <slot></slot>
