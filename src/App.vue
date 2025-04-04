@@ -10,11 +10,8 @@ import TheWelcome from './components/TheWelcome.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div>
-<<<<<<< HEAD
   </header> 
-=======
-  </header>
->>>>>>> 76d343b (initial commit)
+
 
   <main>
     <TheWelcome />
