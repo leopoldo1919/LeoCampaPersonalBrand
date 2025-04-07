@@ -1,43 +1,49 @@
+<script setup>
+import { useLanguage } from '../composables/useLanguage';
+
+const { t } = useLanguage();
+</script>
+
 <template>
   <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h2>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ t('contact.title') }}</h2>
         <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
         <p class="text-gray-700 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
-          I'm always open to new opportunities and projects. Feel free to reach out!
+          {{ t('contact.subtitle') }}
         </p>
       </div>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ t('contact.formTitle') }}</h3>
           <form>
             <div class="mb-4">
-              <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+              <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.name') }}</label>
               <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="John Doe" />
             </div>
             <div class="mb-4">
-              <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+              <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.email') }}</label>
               <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="john@example.com" />
             </div>
             <div class="mb-4">
-              <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+              <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.subject') }}</label>
               <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="Project Inquiry" />
             </div>
             <div class="mb-6">
-              <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+              <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.message') }}</label>
               <textarea id="message" rows="5" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="Your message..."></textarea>
             </div>
             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-              Send Message
+              {{ t('contact.send') }}
             </button>
           </form>
         </div>
         
         <div class="flex flex-col justify-between">
           <div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ t('contact.contactTitle') }}</h3>
             <div class="space-y-4">
               <div class="flex items-start">
                 <div class="text-blue-600 mr-4">
@@ -46,7 +52,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h4 class="text-gray-900 dark:text-white font-medium">Email</h4>
+                  <h4 class="text-gray-900 dark:text-white font-medium">{{ t('contact.emailLabel') }}</h4>
                   <p class="text-gray-700 dark:text-gray-300">contact@leocampa.com</p>
                 </div>
               </div>
@@ -57,7 +63,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h4 class="text-gray-900 dark:text-white font-medium">Phone</h4>
+                  <h4 class="text-gray-900 dark:text-white font-medium">{{ t('contact.phoneLabel') }}</h4>
                   <p class="text-gray-700 dark:text-gray-300">+1 (123) 456-7890</p>
                 </div>
               </div>
@@ -69,7 +75,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h4 class="text-gray-900 dark:text-white font-medium">Location</h4>
+                  <h4 class="text-gray-900 dark:text-white font-medium">{{ t('contact.locationLabel') }}</h4>
                   <p class="text-gray-700 dark:text-gray-300">San Francisco, CA</p>
                 </div>
               </div>
@@ -77,7 +83,7 @@
           </div>
           
           <div class="mt-8">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Follow Me</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ t('contact.followTitle') }}</h3>
             <div class="flex space-x-4">
               <a href="#" class="bg-gray-200 dark:bg-gray-700 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 p-3 rounded-full transition duration-300">
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">

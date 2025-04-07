@@ -1,11 +1,17 @@
+<script setup>
+import { useLanguage } from '../composables/useLanguage';
+
+const { t } = useLanguage();
+</script>
+
 <template>
   <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">My Skills</h2>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ t('skills.title') }}</h2>
         <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
         <p class="text-gray-700 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
-          I've honed my skills in various technologies and tools to deliver high-quality web solutions.
+          {{ t('skills.subtitle') }}
         </p>
       </div>
       
@@ -17,23 +23,23 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Frontend Development</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ t('skills.frontend.title') }}</h3>
           <ul class="space-y-2 text-gray-700 dark:text-gray-300">
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>HTML5, CSS3, JavaScript (ES6+)</span>
+              <span>{{ t('skills.frontend.skill1') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Vue.js, React, Svelte</span>
+              <span>{{ t('skills.frontend.skill2') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Tailwind CSS, SCSS, Styled Components</span>
+              <span>{{ t('skills.frontend.skill3') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Responsive & Mobile-First Design</span>
+              <span>{{ t('skills.frontend.skill4') }}</span>
             </li>
           </ul>
         </div>
@@ -45,23 +51,23 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">UI/UX Design</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ t('skills.ui.title') }}</h3>
           <ul class="space-y-2 text-gray-700 dark:text-gray-300">
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Figma, Adobe XD</span>
+              <span>{{ t('skills.ui.skill1') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>User-Centered Design Principles</span>
+              <span>{{ t('skills.ui.skill2') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Wireframing & Prototyping</span>
+              <span>{{ t('skills.ui.skill3') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Accessibility (WCAG) Standards</span>
+              <span>{{ t('skills.ui.skill4') }}</span>
             </li>
           </ul>
         </div>
@@ -73,23 +79,23 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Other Skills</h3>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ t('skills.other.title') }}</h3>
           <ul class="space-y-2 text-gray-700 dark:text-gray-300">
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Git, GitHub, GitLab</span>
+              <span>{{ t('skills.other.skill1') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>CI/CD, Jest, Cypress</span>
+              <span>{{ t('skills.other.skill2') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Node.js, Express, Basic Backend</span>
+              <span>{{ t('skills.other.skill3') }}</span>
             </li>
             <li class="flex items-center">
               <span class="mr-2">✓</span>
-              <span>Performance Optimization</span>
+              <span>{{ t('skills.other.skill4') }}</span>
             </li>
           </ul>
         </div>

@@ -1,11 +1,17 @@
+<script setup>
+import { useLanguage } from '../composables/useLanguage';
+
+const { t } = useLanguage();
+</script>
+
 <template>
   <section id="projects" class="py-20 bg-white dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ t('projects.title') }}</h2>
         <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
         <p class="text-gray-700 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
-          Here are some of my recent projects that showcase my skills and expertise.
+          {{ t('projects.subtitle') }}
         </p>
       </div>
       
@@ -14,12 +20,12 @@
         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
           <div class="relative">
             <img src="https://via.placeholder.com/600x400" alt="Project 1" class="w-full h-48 object-cover" />
-            <div class="absolute top-0 left-0 bg-blue-600 text-white py-1 px-3 text-sm">Web App</div>
+            <div class="absolute top-0 left-0 bg-blue-600 text-white py-1 px-3 text-sm">{{ t('projects.project1.tag') }}</div>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">E-commerce Dashboard</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ t('projects.project1.title') }}</h3>
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-              A comprehensive dashboard for e-commerce store owners with real-time analytics and inventory management.
+              {{ t('projects.project1.description') }}
             </p>
             <div class="flex flex-wrap gap-2 mb-6">
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">Vue.js</span>
@@ -27,8 +33,8 @@
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">Chart.js</span>
             </div>
             <div class="flex justify-between">
-              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Live</a>
-              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">GitHub</a>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">{{ t('projects.viewLive') }}</a>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">{{ t('projects.viewCode') }}</a>
             </div>
           </div>
         </div>
@@ -37,12 +43,12 @@
         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
           <div class="relative">
             <img src="https://via.placeholder.com/600x400" alt="Project 2" class="w-full h-48 object-cover" />
-            <div class="absolute top-0 left-0 bg-purple-600 text-white py-1 px-3 text-sm">Mobile App</div>
+            <div class="absolute top-0 left-0 bg-purple-600 text-white py-1 px-3 text-sm">{{ t('projects.project2.tag') }}</div>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Fitness Tracker</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ t('projects.project2.title') }}</h3>
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-              A mobile-first application for tracking workouts, nutrition, and progress with personalized recommendations.
+              {{ t('projects.project2.description') }}
             </p>
             <div class="flex flex-wrap gap-2 mb-6">
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">React Native</span>
@@ -50,8 +56,8 @@
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">Redux</span>
             </div>
             <div class="flex justify-between">
-              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Live</a>
-              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">GitHub</a>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">{{ t('projects.viewLive') }}</a>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">{{ t('projects.viewCode') }}</a>
             </div>
           </div>
         </div>
@@ -60,12 +66,12 @@
         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
           <div class="relative">
             <img src="https://via.placeholder.com/600x400" alt="Project 3" class="w-full h-48 object-cover" />
-            <div class="absolute top-0 left-0 bg-green-600 text-white py-1 px-3 text-sm">Website</div>
+            <div class="absolute top-0 left-0 bg-green-600 text-white py-1 px-3 text-sm">{{ t('projects.project3.tag') }}</div>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Restaurant Booking Platform</h3>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ t('projects.project3.title') }}</h3>
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-              A responsive website for a restaurant chain with online reservation system and menu management.
+              {{ t('projects.project3.description') }}
             </p>
             <div class="flex flex-wrap gap-2 mb-6">
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">Vue.js</span>
@@ -73,8 +79,8 @@
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">MongoDB</span>
             </div>
             <div class="flex justify-between">
-              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">View Live</a>
-              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">GitHub</a>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">{{ t('projects.viewLive') }}</a>
+              <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">{{ t('projects.viewCode') }}</a>
             </div>
           </div>
         </div>
@@ -82,7 +88,7 @@
       
       <div class="text-center mt-12">
         <a href="#" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300">
-          View All Projects
+          {{ t('projects.viewAll') }}
         </a>
       </div>
     </div>
