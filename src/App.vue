@@ -1,48 +1,30 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Navbar from './components/Navbar.vue';
+import Hero from './components/Hero.vue';
+import About from './components/About.vue';
+import Skills from './components/Skills.vue';
+import Projects from './components/Projects.vue';
+import Contact from './components/Contact.vue';
+import Footer from './components/Footer.vue';
+import Clarity from '@microsoft/clarity';
+
+// Make sure to add your actual project id instead of "yourProjectId".
+const projectId = "r0mvocpr6h"
+
+Clarity.init(projectId);
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper bg-amber-400">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header> 
-
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <Navbar />
+    <main>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
