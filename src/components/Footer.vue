@@ -32,16 +32,17 @@ const { t } = useLanguage();
         <div>
           <h4 class="text-lg font-semibold mb-4">{{ t('footer.connect') }}</h4>
           <ul class="space-y-2">
-            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">LinkedIn</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">GitHub</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Twitter</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/leo-camp%C3%A0-a750101a5/?lipi=urn%3Ali%3Apage%3Ad_flagship3_notifications%3BGK4ISn%2BJRkeCEaeVOcWTjQ%3D%3D" class="text-gray-400 hover:text-white transition duration-300">LinkedIn</a></li>
+            <li><a href="https://github.com/leopoldo1919" class="text-gray-400 hover:text-white transition duration-300">GitHub</a></li>
+            <li><a href="https://qr.me-qr.com/H9R4xFWk" class="text-gray-400 hover:text-white transition duration-300">CV</a></li>
+            <li><a href="https://www.instagram.com/leaver1919/?e=006249fc-e5ed-4245-83ef-92bcbeb65b62&g=5" class="text-gray-400 hover:text-white transition duration-300">Instagram</a></li>
           </ul>
         </div>
       </div>
       
       <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
         <p>{{ t('footer.builtWith') }}</p>
+        <p>{{ t('footer.clarityWarning') }}</p>
       </div>
     </div>
   </footer>

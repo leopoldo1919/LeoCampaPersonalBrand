@@ -6,12 +6,6 @@ import Skills from './components/Skills.vue';
 import Projects from './components/Projects.vue';
 import Contact from './components/Contact.vue';
 import Footer from './components/Footer.vue';
-import Clarity from '@microsoft/clarity';
-
-// Make sure to add your actual project id instead of "yourProjectId".
-const projectId = "r0mvocpr6h"
-
-Clarity.init(projectId);
 
 </script>
 

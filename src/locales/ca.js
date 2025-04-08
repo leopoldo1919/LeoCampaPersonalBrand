@@ -15,56 +15,57 @@ export const ca = {
   },
   about: {
     title: 'Sobre Mi',
-    jobTitle: 'Desenvolupador Frontend & Dissenyador UI',
-    paragraph1: 'Hola! Sóc Leo Campa, un desenvolupador frontend apassionat amb bon ull pel disseny i l\'experiència d\'usuari. M\'especialitzo en crear aplicacions web responsives, accessibles i d\'alt rendiment utilitzant tecnologies modernes com Vue.js, React i Tailwind CSS.',
-    paragraph2: 'El meu viatge en el desenvolupament web va començar fa 5 anys, i des de llavors, he treballat amb diversos clients des de startups fins a empreses establertes, ajudant-los a donar vida a les seves visions digitals.',
-    experience: '+5 Anys d\'Experiència'
+    jobTitle: 'Desenvolupador Full Stack',
+    paragraph1: 'Hola! Sóc Leo Campa, un desenvolupador full stack apassionat amb bon ull pel disseny i l\'experiència d\'usuari. M\'especialitzo en crear aplicacions web responsives, accessibles i d\'alt rendiment utilitzant tecnologies modernes com Vue.js, PHP, Laravel i Tailwind CSS.',
+    paragraph2: 'El meu viatge en el desenvolupament web va començar aquest any, he treballat amb diversos projectes que han desafiat les meves habilitats i m\'han ajudat a créixer com a professional. He col·laborat amb companys d\'equip amb GitHub per a millorar les meves habilitats i aprendre de les seves experiències.',
+    experience: '1 Any d\'Experiència'
   },
   skills: {
     title: 'Les Meves Habilitats',
     subtitle: 'He perfeccionat les meves habilitats en diverses tecnologies i eines per oferir solucions web d\'alta qualitat.',
     frontend: {
-      title: 'Desenvolupament Frontend',
+      title: 'Desenvolupament Full Stack',
       skill1: 'HTML5, CSS3, JavaScript (ES6+)',
-      skill2: 'Vue.js, React, Svelte',
+      skill2: 'Vue.js, React, Laravel, PHP',
       skill3: 'Tailwind CSS, SCSS, Styled Components',
       skill4: 'Disseny Responsiu i Mobile-First'
     },
     ui: {
-      title: 'Disseny UI/UX',
-      skill1: 'Figma, Adobe XD',
+      title: 'Experiència d\'Usuari UI/UX',
+      skill1: 'Figma, paint',
       skill2: 'Principis de Disseny Centrat en Usuari',
-      skill3: 'Wireframing i Prototipat',
-      skill4: 'Estàndards d\'Accessibilitat (WCAG)'
+      skill3: 'Accessibilitat i Disseny Inclusiu',
+      skill4: 'Expert en experiència d\'usuari'
     },
     other: {
       title: 'Altres Habilitats',
-      skill1: 'Git, GitHub, GitLab',
-      skill2: 'CI/CD, Jest, Cypress',
-      skill3: 'Node.js, Express, Backend Bàsic',
-      skill4: 'Optimització de Rendiment'
+      skill1: 'Git, GitHub',
+      skill2: 'Node.js, c# Bàsic',
+      skill3: 'MySQL, Docker',
     }
   },
   projects: {
     title: 'Projectes Destacats',
     subtitle: 'Aquests són alguns dels meus projectes recents que mostren les meves habilitats i experiència.',
-    viewLive: 'Veure Demo',
+    viewLive3: 'Projecte Privat',
+    viewLive2: 'Projecte Privat',
+    viewLive1: 'Veure Web',
     viewCode: 'GitHub',
     viewAll: 'Veure Tots els Projectes',
     project1: {
-      title: 'Dashboard d\'E-commerce',
-      description: 'Un dashboard complet per a propietaris de botigues online amb anàlisi en temps real i gestió d\'inventari.',
+      title: 'Regam',
+      description: 'Una pàgina destinada a la cerca de diferents arbres i plantes, amb un disseny atractiu i funcional.',
       tag: 'Aplicació Web'
     },
     project2: {
-      title: 'Seguidor de Fitness',
-      description: 'Una aplicació mobile-first per al seguiment d\'entrenaments, nutrició i progrés amb recomanacions personalitzades.',
-      tag: 'App Mòbil'
+      title: 'Tot Maquina',
+      description: 'Una aplicació web per a gestionar les teves màquines i eines, amb un disseny modern i funcional.',
+      tag: 'Aplicació Web'
     },
     project3: {
-      title: 'Plataforma de Reserves per a Restaurants',
-      description: 'Un lloc web responsiu per a una cadena de restaurants amb sistema de reserves online i gestió de menús.',
-      tag: 'Lloc Web'
+      title: 'Stepmania',
+      description: 'Un lloc web caòtic i divertit, amb un disseny atrevit i colors vius.',
+      tag: 'Aplicació Web'
     }
   },
   contact: {
@@ -83,10 +84,11 @@ export const ca = {
     followTitle: 'Segueix-me'
   },
   footer: {
-    description: 'Desenvolupador frontend enfocat en crear experiències web boniques i funcionals.',
+    description: 'Desenvolupador full stack enfocat en crear experiències web boniques i funcionals.',
     rights: 'Tots els drets reservats.',
     quickLinks: 'Enllaços Ràpids',
     connect: 'Connectar',
-    builtWith: 'Dissenyat i construït amb ❤️ utilitzant Vue.js i Tailwind CSS'
+    builtWith: 'Dissenyat i construït amb ❤️ utilitzant Vue.js i Tailwind CSS',
+    clarityWarning: 'Avisem que aquesta pàgina està utilitzant Microsoft Clarity, al visitar la pàgina es considera que acceptes les condicions d\'ús.',
   }
 };

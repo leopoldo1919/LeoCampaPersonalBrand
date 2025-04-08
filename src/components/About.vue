@@ -16,17 +16,17 @@ const { t } = useLanguage();
         <div class="md:w-1/2 mb-10 md:mb-0">
           <div class="relative">
             <img 
-              src="https://via.placeholder.com/600x600" 
-              alt="Leo Campa working" 
+              src="../assets/LeoFotoPresentacio.jpeg" 
+              alt="Leo Campa Live" 
               class="rounded-lg shadow-xl max-w-sm mx-auto"
             />
-            <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white py-4 px-6 rounded-lg shadow-lg">
-              <p class="font-bold">{{ t('about.experience') }}</p>
-            </div>
           </div>
         </div>
         
         <div class="md:w-1/2 md:pl-12">
+            <div class="absolute -bottom-0 right-80 bg-blue-600 text-white py-4 px-6 rounded-lg shadow-lg">
+              <p class="font-bold">{{ t('about.experience') }}</p>
+            </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.jobTitle') }}</h3>
           <p class="text-gray-700 dark:text-gray-300 mb-6">
             {{ t('about.paragraph1') }}
@@ -39,7 +39,6 @@ const { t } = useLanguage();
             <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">React</span>
             <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">Tailwind CSS</span>
             <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">JavaScript</span>
-            <span class="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">UI/UX</span>
           </div>
         </div>
       </div>
