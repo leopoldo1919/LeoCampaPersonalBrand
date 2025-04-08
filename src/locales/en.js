@@ -15,56 +15,57 @@ export const en = {
   },
   about: {
     title: 'About Me',
-    jobTitle: 'Frontend Developer & UI Designer',
-    paragraph1: 'Hello! I\'m Leo Campa, a passionate frontend developer with a keen eye for design and user experience. I specialize in creating responsive, accessible, and performant web applications using modern technologies like Vue.js, React, and Tailwind CSS.',
-    paragraph2: 'My journey in web development started 5 years ago, and since then, I\'ve worked with various clients from startups to established businesses, helping them bring their digital visions to life.',
-    experience: '5+ Years Experience'
+    jobTitle: 'Full Stack Developer',
+    paragraph1: 'Hello! I\'m Leo Campa, a passionate full stack developer with a keen eye for design and user experience. I specialize in creating responsive, accessible, and performant web applications using modern technologies like Vue.js, PHP, Laravel and Tailwind CSS.',
+    paragraph2: 'My journey in web development started this year, I\'ve worked on various projects that have challenged my skills and helped me grow as a professional. I\'ve collaborated with team members using GitHub to improve my skills and learn from their experiences.',
+    experience: '1 Year Experience'
   },
   skills: {
     title: 'My Skills',
     subtitle: 'I\'ve honed my skills in various technologies and tools to deliver high-quality web solutions.',
     frontend: {
-      title: 'Frontend Development',
+      title: 'Full Stack Development',
       skill1: 'HTML5, CSS3, JavaScript (ES6+)',
-      skill2: 'Vue.js, React, Svelte',
+      skill2: 'Vue.js, React, Laravel, PHP',
       skill3: 'Tailwind CSS, SCSS, Styled Components',
       skill4: 'Responsive & Mobile-First Design'
     },
     ui: {
-      title: 'UI/UX Design',
+      title: 'User Experience UI/UX',
       skill1: 'Figma, Adobe XD',
       skill2: 'User-Centered Design Principles',
-      skill3: 'Wireframing & Prototyping',
-      skill4: 'Accessibility (WCAG) Standards'
+      skill3: 'Accessibility and Inclusive Design',
+      skill4: 'User Experience Expert'
     },
     other: {
       title: 'Other Skills',
-      skill1: 'Git, GitHub, GitLab',
-      skill2: 'CI/CD, Jest, Cypress',
-      skill3: 'Node.js, Express, Basic Backend',
-      skill4: 'Performance Optimization'
+      skill1: 'Git, GitHub',
+      skill2: 'Node.js, Basic c#',
+      skill3: 'MySQL, Docker',
     }
   },
   projects: {
     title: 'Featured Projects',
     subtitle: 'Here are some of my recent projects that showcase my skills and expertise.',
-    viewLive: 'View Live',
+    viewLive1: 'View Website',
+    viewLive2: 'Private Project',
+    viewLive3: 'Private Project',
     viewCode: 'GitHub',
     viewAll: 'View All Projects',
     project1: {
-      title: 'E-commerce Dashboard',
-      description: 'A comprehensive dashboard for e-commerce store owners with real-time analytics and inventory management.',
+      title: 'Regam',
+      description: 'A page dedicated to searching for different trees and plants, with an attractive and functional design.',
       tag: 'Web App'
     },
     project2: {
-      title: 'Fitness Tracker',
-      description: 'A mobile-first application for tracking workouts, nutrition, and progress with personalized recommendations.',
-      tag: 'Mobile App'
+      title: 'Tot Maquina',
+      description: 'A web application to manage your machines and tools, with a modern and functional design.',
+      tag: 'Web App'
     },
     project3: {
-      title: 'Restaurant Booking Platform',
-      description: 'A responsive website for a restaurant chain with online reservation system and menu management.',
-      tag: 'Website'
+      title: 'Stepmania',
+      description: 'A chaotic and fun website, with a bold design and vibrant colors.',
+      tag: 'Web App'
     }
   },
   contact: {
@@ -83,10 +84,11 @@ export const en = {
     followTitle: 'Follow Me'
   },
   footer: {
-    description: 'Frontend developer focused on creating beautiful and functional web experiences.',
+    description: 'Full stack developer focused on creating beautiful and functional web experiences.',
     rights: 'All rights reserved.',
     quickLinks: 'Quick Links',
     connect: 'Connect',
-    builtWith: 'Designed and built with ❤️ using Vue.js and Tailwind CSS'
+    builtWith: 'Designed and built with ❤️ using Vue.js and Tailwind CSS',
+    clarityWarning: 'We inform you that this page is using Microsoft Clarity. By visiting the page, you are considered to accept the terms of use.'
   }
 };
