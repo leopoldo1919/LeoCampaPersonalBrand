@@ -17,7 +17,7 @@ export const ca = {
     title: 'Sobre Mi',
     jobTitle: 'Desenvolupador Full Stack',
     paragraph1: 'Hola! Sóc Leo Campa, un desenvolupador full stack apassionat amb bon ull pel disseny i l\'experiència d\'usuari. M\'especialitzo en crear aplicacions web responsives, accessibles i d\'alt rendiment utilitzant tecnologies modernes com Vue.js, PHP, Laravel i Tailwind CSS.',
-    paragraph2: 'El meu viatge en el desenvolupament web va començar aquest any, he treballat amb diversos projectes que han desafiat les meves habilitats i m\'han ajudat a créixer com a professional. He col·laborat amb companys d\'equip amb GitHub per a millorar les meves habilitats i aprendre de les seves experiències.',
+    paragraph2: 'El meu viatge en el desenvolupament web ha començat aquest any i he treballat amb diversos projectes que han desafiat les meves habilitats i m\'han ajudat a créixer com a professional. He col·laborat amb companys d\'equip amb GitHub per a millorar les meves habilitats i aprendre de les seves experiències.',
     experience: '1 Any d\'Experiència'
   },
   skills: {
@@ -81,7 +81,10 @@ export const ca = {
     emailLabel: 'Email',
     phoneLabel: 'Telèfon',
     locationLabel: 'Ubicació',
-    followTitle: 'Segueix-me'
+    followTitle: 'Segueix-me',
+    sending: 'Enviant...',
+    successMessage: 'El teu missatge s\'ha enviat correctament!',
+    recaptchaError: 'Si us plau, verifica que no ets un robot'
   },
   footer: {
     description: 'Desenvolupador full stack enfocat en crear experiències web boniques i funcionals.',

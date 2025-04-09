@@ -25,7 +25,7 @@ const { t } = useLanguage();
           <div class="bg-white p-4 rounded-full shadow-xl max-w-xs mx-auto">
             <div class="rounded-full overflow-hidden aspect-square">
               <img 
-                src="../assets/FotoPerfil.jpeg" 
+                src="../assets/LeoFotoPerfil.jpeg" 
                 alt="Leo Campa" 
                 class="w-full h-full object-cover"
               />

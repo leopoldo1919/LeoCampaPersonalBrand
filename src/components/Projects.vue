@@ -36,7 +36,7 @@ const { t } = useLanguage();
               <span class="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded text-xs">MySQL</span>
             </div>
             <div class="flex justify-between">
-              <a href="#" class="text-blue-600  hover:text-blue-800 font-medium">{{ t('projects.viewLive1') }}</a>
+              <a href="http://regam.grup1dawcendrassos.cat" class="text-blue-600  hover:text-blue-800 font-medium">{{ t('projects.viewLive1') }}</a>
             </div>
           </div>
         </div>

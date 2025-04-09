@@ -16,7 +16,7 @@ const { t } = useLanguage();
         <div class="md:w-1/2 mb-10 md:mb-0">
           <div class="relative">
             <img 
-              src="../assets/LeoFotoPresentacio.jpeg" 
+              src="../assets/LeoFotoFull.jpeg" 
               alt="Leo Campa Live" 
               class="rounded-lg shadow-xl max-w-sm mx-auto"
             />
@@ -24,9 +24,9 @@ const { t } = useLanguage();
         </div>
         
         <div class="md:w-1/2 md:pl-12">
-            <div class="absolute -bottom-0 right-80 bg-blue-600 text-white py-4 px-6 rounded-lg shadow-lg">
-              <p class="font-bold">{{ t('about.experience') }}</p>
-            </div>
+          <div class="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md inline-block mb-3">
+            <p class="font-bold text-sm">{{ t('about.experience') }}</p>
+          </div>
           <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.jobTitle') }}</h3>
           <p class="text-gray-700 dark:text-gray-300 mb-6">
             {{ t('about.paragraph1') }}

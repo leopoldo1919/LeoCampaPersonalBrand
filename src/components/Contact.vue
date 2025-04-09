@@ -1,7 +1,153 @@
 <script setup>
 import { useLanguage } from '../composables/useLanguage';
+import { ref, onMounted } from 'vue';
+import emailjs from '@emailjs/browser';
 
 const { t } = useLanguage();
+
+// Form data
+const formData = ref({
+  name: '',
+  email: '',
+  subject: '',
+  message: ''
+});
+
+// Form states
+const isLoading = ref(false);
+const formStatus = ref(null); // null, 'success', 'error'
+const errorMessage = ref('');
+const recaptchaToken = ref('');
+const recaptchaContainer = ref(null);
+
+// Validation state
+const errors = ref({});
+
+// Validate form
+const validateForm = () => {
+  errors.value = {};
+  let isValid = true;
+
+  if (!formData.value.name.trim()) {
+    errors.value.name = 'Name is required';
+    isValid = false;
+  }
+
+  if (!formData.value.email.trim()) {
+    errors.value.email = 'Email is required';
+    isValid = false;
+  } else if (!/^\S+@\S+\.\S+$/.test(formData.value.email)) {
+    errors.value.email = 'Please enter a valid email';
+    isValid = false;
+  }
+
+  if (!formData.value.subject.trim()) {
+    errors.value.subject = 'Subject is required';
+    isValid = false;
+  }
+
+  if (!formData.value.message.trim()) {
+    errors.value.message = 'Message is required';
+    isValid = false;
+  }
+
+  // Check if reCAPTCHA was completed
+  if (!recaptchaToken.value) {
+    errors.value.recaptcha = t('contact.recaptchaError') || 'Please verify you are not a robot';
+    isValid = false;
+  }
+
+  return isValid;
+};
+
+// Submit form
+const submitForm = async (e) => {
+  e.preventDefault();
+  
+  // Get reCAPTCHA response token
+  recaptchaToken.value = window.grecaptcha?.getResponse();
+  
+  // Validate form
+  if (!validateForm()) {
+    return;
+  }
+  
+  isLoading.value = true;
+  formStatus.value = null;
+  
+  try {
+    const response = await emailjs.send(
+      'service_sc8kd2g', 
+      'template_cyh6477',
+      {
+        from_name: formData.value.name,
+        email: formData.value.email,
+        subject: formData.value.subject,
+        message: formData.value.message,
+        'g-recaptcha-response': recaptchaToken.value // Include reCAPTCHA token
+      },
+      'F-XviRyAwFEKoFPMY'
+    );
+    
+    if (response.status === 200) {
+      formStatus.value = 'success';
+      // Reset form
+      formData.value = { name: '', email: '', subject: '', message: '' };
+      recaptchaToken.value = '';
+      // Reset reCAPTCHA
+      if (window.grecaptcha) {
+        window.grecaptcha.reset();
+      }
+    } else {
+      formStatus.value = 'error';
+      errorMessage.value = 'Something went wrong. Please try again.';
+    }
+  } catch (error) {
+    formStatus.value = 'error';
+    errorMessage.value = error.message || 'Failed to send message. Please try again.';
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+// Ensure reCAPTCHA is rendered properly after component mount
+onMounted(() => {
+  // Make sure grecaptcha is ready (the script might load after component mount)
+  if (window.grecaptcha && window.grecaptcha.render && recaptchaContainer.value) {
+    try {
+      window.grecaptcha.render(recaptchaContainer.value, {
+        'sitekey': '6LcqyxArAAAAAF5aQtYxhPCxbHztsVENL76dyuuk',
+        'callback': (token) => {
+          recaptchaToken.value = token;
+        },
+        'expired-callback': () => {
+          recaptchaToken.value = '';
+        }
+      });
+    } catch (e) {
+      // The reCAPTCHA might have already been rendered
+      console.warn('reCAPTCHA may have already been rendered', e);
+    }
+  } else {
+    // If grecaptcha isn't available yet, wait for it
+    window.onRecaptchaLoaded = () => {
+      if (recaptchaContainer.value) {
+        window.grecaptcha.render(recaptchaContainer.value, {
+          'sitekey': '6LcqyxArAAAAAF5aQtYxhPCxbHztsVENL76dyuuk',
+          'callback': (token) => {
+            recaptchaToken.value = token;
+          },
+          'expired-callback': () => {
+            recaptchaToken.value = '';
+          }
+        });
+      }
+    };
+  }
+});
+
+// EmailJS initialization
+emailjs.init('F-XviRyAwFEKoFPMY');
 </script>
 
 <template>
@@ -18,25 +164,93 @@ const { t } = useLanguage();
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ t('contact.formTitle') }}</h3>
-          <form>
+          
+          <!-- Form status alerts -->
+          <div v-if="formStatus === 'success'" class="mb-4 p-3 bg-green-100 text-green-800 rounded-lg">
+            {{ t('contact.successMessage') || 'Your message has been sent successfully!' }}
+          </div>
+          
+          <div v-if="formStatus === 'error'" class="mb-4 p-3 bg-red-100 text-red-800 rounded-lg">
+            {{ errorMessage }}
+          </div>
+          
+          <form @submit="submitForm">
             <div class="mb-4">
               <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.name') }}</label>
-              <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="John Doe" />
+              <input 
+                type="text" 
+                id="name" 
+                v-model="formData.name"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" 
+                :class="{'border-red-500': errors.name}"
+                placeholder="John Doe" 
+              />
+              <p v-if="errors.name" class="text-red-500 text-sm mt-1">{{ errors.name }}</p>
             </div>
+            
             <div class="mb-4">
               <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.email') }}</label>
-              <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="john@example.com" />
+              <input 
+                type="email" 
+                id="email" 
+                v-model="formData.email"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" 
+                :class="{'border-red-500': errors.email}"
+                placeholder="john@example.com" 
+              />
+              <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
             </div>
+            
             <div class="mb-4">
               <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.subject') }}</label>
-              <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="Project Inquiry" />
+              <input 
+                type="text" 
+                id="subject" 
+                v-model="formData.subject"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" 
+                :class="{'border-red-500': errors.subject}"
+                placeholder="Project Inquiry" 
+              />
+              <p v-if="errors.subject" class="text-red-500 text-sm mt-1">{{ errors.subject }}</p>
             </div>
+            
             <div class="mb-6">
               <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.message') }}</label>
-              <textarea id="message" rows="5" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" placeholder="Your message..."></textarea>
+              <textarea 
+                id="message" 
+                rows="5" 
+                v-model="formData.message"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600" 
+                :class="{'border-red-500': errors.message}"
+                placeholder="Your message..."
+              ></textarea>
+              <p v-if="errors.message" class="text-red-500 text-sm mt-1">{{ errors.message }}</p>
             </div>
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300">
-              {{ t('contact.send') }}
+            
+            <!-- reCAPTCHA widget with improved styling -->
+            <div class="mb-4">
+              <div 
+                ref="recaptchaContainer" 
+                id="recaptcha-container" 
+                class="g-recaptcha flex justify-center my-4"
+                data-sitekey="6LcqyxArAAAAAF5aQtYxhPCxbHztsVENL76dyuuk"
+              ></div>
+              <p v-if="errors.recaptcha" class="text-red-500 text-sm mt-1 text-center">{{ errors.recaptcha }}</p>
+            </div>
+            
+            <div class="mb-6 text-center text-xs text-gray-500 dark:text-gray-400">
+              This site is protected by reCAPTCHA and the
+              <a href="https://policies.google.com/privacy" class="text-blue-600 hover:underline">Privacy Policy</a> and
+              <a href="https://policies.google.com/terms" class="text-blue-600 hover:underline">Terms of Service</a> apply.
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex justify-center items-center"
+              :disabled="isLoading"
+            >
+              <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></span>
+              {{ isLoading ? t('contact.sending') || 'Sending...' : t('contact.send') }}
             </button>
           </form>
         </div>

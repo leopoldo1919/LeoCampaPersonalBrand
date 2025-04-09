@@ -17,7 +17,7 @@ export const es = {
     title: 'Sobre Mí',
     jobTitle: 'Desarrollador Full Stack',
     paragraph1: '¡Hola! Soy Leo Campa, un desarrollador full stack apasionado con un buen ojo para el diseño y la experiencia de usuario. Me especializo en crear aplicaciones web responsivas, accesibles y de alto rendimiento utilizando tecnologías modernas como Vue.js, PHP, Laravel y Tailwind CSS.',
-    paragraph2: 'Mi viaje en el desarrollo web comenzó este año, he trabajado en varios proyectos que han desafiado mis habilidades y me han ayudado a crecer como profesional. He colaborado con compañeros de equipo usando GitHub para mejorar mis habilidades y aprender de sus experiencias.',
+    paragraph2: 'Mi viaje en el desarrollo web ha comenzado este año y he trabajado en varios proyectos que han desafiado mis habilidades y me han ayudado a crecer como profesional. He colaborado con compañeros de equipo usando GitHub para mejorar mis habilidades y aprender de sus experiencias.',
     experience: '1 Año de Experiencia'
   },
   skills: {
@@ -32,7 +32,7 @@ export const es = {
     },
     ui: {
       title: 'Experiencia de Usuario UI/UX',
-      skill1: 'Figma, Adobe XD',
+      skill1: 'Figma, Paint',
       skill2: 'Principios de Diseño Centrado en Usuario',
       skill3: 'Accesibilidad y Diseño Inclusivo',
       skill4: 'Experto en experiencia de usuario'
@@ -77,11 +77,14 @@ export const es = {
     subject: 'Asunto',
     message: 'Mensaje',
     send: 'Enviar Mensaje',
+    sending: 'Enviando...',
+    successMessage: '¡Tu mensaje ha sido enviado con éxito!',
     contactTitle: 'Información de Contacto',
     emailLabel: 'Email',
     phoneLabel: 'Teléfono',
     locationLabel: 'Ubicación',
-    followTitle: 'Sígueme'
+    followTitle: 'Sígueme',
+    recaptchaError: 'Por favor, verifica que no eres un robot'
   },
   footer: {
     description: 'Desarrollador full stack enfocado en crear experiencias web hermosas y funcionales.',
