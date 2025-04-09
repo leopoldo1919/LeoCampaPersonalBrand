@@ -1,6 +1,6 @@
 <script setup>
 import { useLanguage } from '../composables/useLanguage';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import emailjs from '@emailjs/browser';
 
 const { t } = useLanguage();
@@ -17,6 +17,8 @@ const formData = ref({
 const isLoading = ref(false);
 const formStatus = ref(null); // null, 'success', 'error'
 const errorMessage = ref('');
+const recaptchaToken = ref('');
+const recaptchaContainer = ref(null);
 
 // Validation state
 const errors = ref({});
@@ -49,6 +51,12 @@ const validateForm = () => {
     isValid = false;
   }
 
+  // Check if reCAPTCHA was completed
+  if (!recaptchaToken.value) {
+    errors.value.recaptcha = t('contact.recaptchaError') || 'Please verify you are not a robot';
+    isValid = false;
+  }
+
   return isValid;
 };
 
@@ -56,7 +64,10 @@ const validateForm = () => {
 const submitForm = async (e) => {
   e.preventDefault();
   
-  // Validate form first
+  // Get reCAPTCHA response token
+  recaptchaToken.value = window.grecaptcha?.getResponse();
+  
+  // Validate form
   if (!validateForm()) {
     return;
   }
@@ -66,21 +77,27 @@ const submitForm = async (e) => {
   
   try {
     const response = await emailjs.send(
-      'service_sc8kd2g', // Your EmailJS service ID 
-      'template_cyh6477', // Your EmailJS template ID
+      'service_sc8kd2g', 
+      'template_cyh6477',
       {
         from_name: formData.value.name,
         email: formData.value.email,
         subject: formData.value.subject,
-        message: formData.value.message
+        message: formData.value.message,
+        'g-recaptcha-response': recaptchaToken.value // Include reCAPTCHA token
       },
-      'F-XviRyAwFEKoFPMY' // Your EmailJS public key
+      'F-XviRyAwFEKoFPMY'
     );
     
     if (response.status === 200) {
       formStatus.value = 'success';
       // Reset form
       formData.value = { name: '', email: '', subject: '', message: '' };
+      recaptchaToken.value = '';
+      // Reset reCAPTCHA
+      if (window.grecaptcha) {
+        window.grecaptcha.reset();
+      }
     } else {
       formStatus.value = 'error';
       errorMessage.value = 'Something went wrong. Please try again.';
@@ -93,8 +110,44 @@ const submitForm = async (e) => {
   }
 };
 
+// Ensure reCAPTCHA is rendered properly after component mount
+onMounted(() => {
+  // Make sure grecaptcha is ready (the script might load after component mount)
+  if (window.grecaptcha && window.grecaptcha.render && recaptchaContainer.value) {
+    try {
+      window.grecaptcha.render(recaptchaContainer.value, {
+        'sitekey': '6LcqyxArAAAAAF5aQtYxhPCxbHztsVENL76dyuuk',
+        'callback': (token) => {
+          recaptchaToken.value = token;
+        },
+        'expired-callback': () => {
+          recaptchaToken.value = '';
+        }
+      });
+    } catch (e) {
+      // The reCAPTCHA might have already been rendered
+      console.warn('reCAPTCHA may have already been rendered', e);
+    }
+  } else {
+    // If grecaptcha isn't available yet, wait for it
+    window.onRecaptchaLoaded = () => {
+      if (recaptchaContainer.value) {
+        window.grecaptcha.render(recaptchaContainer.value, {
+          'sitekey': '6LcqyxArAAAAAF5aQtYxhPCxbHztsVENL76dyuuk',
+          'callback': (token) => {
+            recaptchaToken.value = token;
+          },
+          'expired-callback': () => {
+            recaptchaToken.value = '';
+          }
+        });
+      }
+    };
+  }
+});
+
 // EmailJS initialization
-emailjs.init('F-XviRyAwFEKoFPMY'); // Same public key as above
+emailjs.init('F-XviRyAwFEKoFPMY');
 </script>
 
 <template>
@@ -172,6 +225,23 @@ emailjs.init('F-XviRyAwFEKoFPMY'); // Same public key as above
                 placeholder="Your message..."
               ></textarea>
               <p v-if="errors.message" class="text-red-500 text-sm mt-1">{{ errors.message }}</p>
+            </div>
+            
+            <!-- reCAPTCHA widget with improved styling -->
+            <div class="mb-4">
+              <div 
+                ref="recaptchaContainer" 
+                id="recaptcha-container" 
+                class="g-recaptcha flex justify-center my-4"
+                data-sitekey="6LcqyxArAAAAAF5aQtYxhPCxbHztsVENL76dyuuk"
+              ></div>
+              <p v-if="errors.recaptcha" class="text-red-500 text-sm mt-1 text-center">{{ errors.recaptcha }}</p>
+            </div>
+            
+            <div class="mb-6 text-center text-xs text-gray-500 dark:text-gray-400">
+              This site is protected by reCAPTCHA and the
+              <a href="https://policies.google.com/privacy" class="text-blue-600 hover:underline">Privacy Policy</a> and
+              <a href="https://policies.google.com/terms" class="text-blue-600 hover:underline">Terms of Service</a> apply.
             </div>
             
             <button 
